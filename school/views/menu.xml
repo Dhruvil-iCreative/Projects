@@ -1,0 +1,13 @@
+<odoo>
+    <!-- Top menu item -->
+
+    <menuitem name="Portal" id="school.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Courses" id="school.menu_1" parent="school.menu_root" action="course_action"/>
+    <menuitem name="Departments" id="school.menu_2" parent="school.menu_root" action="department_action"/>
+    <menuitem name="School" id="school.menu_3" parent="school.menu_root" action="school_action"/>
+    <!-- actions -->
+
+</odoo>

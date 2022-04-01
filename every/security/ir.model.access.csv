@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_every_every,every.every,model_every_every,base.group_user,1,1,1,1
+access_discount_apply_wiz,discount_apply_wiz,model_discount_apply_wiz,base.group_user,1,1,1,1
+access_penalty_add_wiz,penalty_add_wiz,model_penalty_add_wiz,base.group_user,1,1,1,1

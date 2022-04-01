@@ -1,0 +1,199 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="every_kanban">
+            <field name="name">Every kanban View</field>
+            <field name="model">every.every</field>
+            <field name="arch" type="xml">
+
+                <kanban class="o_res_partner_kanban" sample="1">
+                    <field name="id"/>
+                    <field name="fname"/>
+                    <field name="lname"/>
+                    <field name="gender"/>
+                    <field name="city"/>
+                    <field name="t_doc"/>
+                    <field name="t_doc_number" widget="phone"/>
+                    <field name="t_doc_exp"/>
+                    <field name="t_doc_qua"/>
+                    <field name="state"/>
+                    <field name="image" widget="image"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                <div t-attf-class="oe_kanban_global_click">
+                                <field name="image" widget="image"/>
+                                <div class="o_kanban_details">
+                                    <ul>
+                                        <li>
+                                            ID:<field name="id"/>
+                                        </li>
+                                        <li>
+                                            First_Name:<field name="fname"/>
+                                        </li>
+                                        <li>
+                                            Last_Name:<field name="lname"/>
+                                        </li>
+                                        <li>
+                                            Gender:<field name="gender"/>
+                                        </li>
+                                        <li>
+                                            City.:<field name="city"/>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            </div>
+
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="every_tree">
+            <field name="name">Every Tree View</field>
+            <field name="model">every.every</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="fname"/>
+                    <field name="lname"/>
+                    <field name="gender"/>
+                    <field name="city"/>
+                    <field name="t_doc"/>
+                    <field name="t_doc_number" widget="phone"/>
+                    <field name="t_doc_exp"/>
+                    <field name="t_doc_qua"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        explicit form view defination-->
+        <record model="ir.ui.view" id="every_form">
+            <field name="name">Every Form View</field>
+            <field name="model">every.every</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="hospital_open"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-history">
+                                <div class="o_stat_info">
+                                    <field name="patient_count" class="o_stat_value"/>
+                                    <span class="o_stat_text">patients</span>
+                                </div>
+                            </button>
+                        </div>
+                    </group>
+                    <header>
+                        <button name="action_process" id="process_activated" string="Process" type="object"
+                                states="start,confirm"/>
+                        <button name="action_confirm" id="process_confirm" string="Confirm" type="object"
+                                class="btn-primary" states="in_process,cancel"/>
+                        <button name="action_cancel" id="process_cancelled" string="Cancel" type="object"
+                                states="start,in_process"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="every_form,hospital_form,all_done,cancel"/>
+                    </header>
+                    <group>
+                        <field name="fname" required="True"/>
+                        <field name="lname" required="True"/>
+                        <field name="gender" widget="radio" options="{'horizontal': true}"/>
+                        <field name="city"/>
+                        <field name="image" widget="image"/>
+                        <field name="partner_id"/>
+                        <field name="city_1"/>
+                    </group>
+                    <group>
+                        <field name="mobile" widget="phone" required="True"/>
+                        <field name="email" widget="email"/>
+
+                    </group>
+                    <group>
+                        <field name="visit_fee"/>
+                        <field name="medication_fee"/>
+                        <field name="total_fee"/>
+                    </group>
+                    <group>
+                        <field name="t_doc"/>
+                        <field name="t_doc_number" widget="phone"/>
+                        <field name="t_doc_exp"/>
+                        <field name="t_doc_qua"/>
+                    </group>
+                    <group>
+                        <button name="wiz_open" string="Discount with wizard" type="object"/>
+                    </group>
+                    <group>
+                        <button name="wiz_open2" string="Penalty with wizard" type="object"/>
+                    </group>
+                    <group>
+                        <button type="action" string="Open Hospital View" name="%(hospital.hospital_action_window)d"
+                                class="btn-sm btn-link mb4 fa fa-globe"/>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <!--        explicit search view defination-->
+
+        <record id="every_search" model="ir.ui.view">
+            <field name="name">every search</field>
+            <field name="model">every.every</field>
+            <field name="arch" type="xml">
+                <search string="Record">
+<!--                    <field name="t_doc" string="Treatement Doctor Name"/>-->
+                    <field name="state"/>
+                    <field name="city"/>
+                    <separator/>
+                    <filter string="Male" name="male" domain="[('gender','=','m')]"/>
+                    <filter string="Female" name="female" domain="[('gender','=','f')]"/>
+                    <filter string="Other" name="other" domain="[('gender','=','o')]"/>
+                    <group expand='1' string='Group by...'>
+                        <filter string='Gender' name="gender" context="{'group_by' : 'gender'}"/>
+                        <filter string='state' name="state" context="{'group_by' : 'state'}"/>
+                        <filter string='t_doc' name="t_doc" context="{'group_by' : 't_doc'}"/>
+                        <!--                        <filter string='Package Type' name="package_type" domain="[]"-->
+                        <!--                                context="{'group_by' : 'package_type_id'}"/>-->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="every.action_window">
+            <field name="name">every window</field>
+            <field name="res_model">every.every</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{'search_default_t_doc' : 1,'search_default_male' : 1}</field>
+<!--            <field name="context">{'search_default_male' : 1}</field>-->
+<!--            <field name="context">{'search_default_state' : 1}</field>-->
+        </record>
+
+
+        <!-- server action to the one above -->
+
+        <record model="ir.actions.server" id="every.action_server">
+            <field name="name">every server</field>
+            <field name="model_id" ref="model_every_every"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = {
+                "type": "ir.actions.act_window",
+                "view_mode": "tree,form",
+                "res_model": model._name,
+                }
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

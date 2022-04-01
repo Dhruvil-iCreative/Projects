@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <!--explicit form view definition-->
+        <record model="ir.ui.view" id="rental_type_wiz_form">
+            <field name="name">Rental Type Wizard Form</field>
+            <field name="model">rental.type.wiz</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="description"/>
+                    </group>
+                    <footer>
+                        <button string="Create" type="object" name="create_rec"/>
+                        <button string="Update" type="object" name="update_rec"/>
+                        <button string="Cancel" special="cancel" class="btn btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="rental_type_wiz_views_action_window">
+            <field name="name">Rental Type Wizard</field>
+            <field name="res_model">rental.type.wiz</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+<odoo>
+    <!-- Top menu item -->
+
+    <menuitem name="student" id="student.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Students" id="student_menu_1" parent="student.menu_root" action="student_action"/>
+    <menuitem name="Appointments" id="appointment_menu_1" parent="student.menu_root" action="appointment_action"/>
+    <menuitem name="Professors" id="professor_menu_1" parent="student.menu_root" action="professor_action"/>
+    <menuitem name="Tasks" id="tasks_menu_1" parent="student.menu_root" action="tasks_action"/>
+
+</odoo>

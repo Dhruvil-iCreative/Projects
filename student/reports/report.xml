@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_student" model="ir.actions.report">
+            <field name="name">Student Details</field>
+            <field name="model">student.student</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">student.report_student_reference</field>
+            <field name="report_file">student.report_student_reference</field>
+            <field name="binding_model_id" ref="model_student_student"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="student_report_paperformat"/>
+        </record>
+
+
+
+    </data>
+</odoo>

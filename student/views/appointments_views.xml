@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="appointment_tree">
+            <field name="name">Appointment List</field>
+            <field name="model">appointment.appointment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="prof_name"/>
+                    <field name="student_id"/>
+                    <field name="emergency"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    explicit form view defination-->
+        <record model="ir.ui.view" id="appointment_form">
+            <field name="name">Appointment Form</field>
+            <field name="model">appointment.appointment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="date"/>
+                            <field name="prof_name"/>
+                            <field name="student_id"/>
+                            <field name="emergency" widget="radio"/>
+                            <field name="emergency_1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="appointment_action">
+            <field name="name">Appointment window</field>
+            <field name="res_model">appointment.appointment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

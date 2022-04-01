@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="add_product_form">
+            <field name="name">add_product_form</field>
+            <field name="model">products.add</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="product_ids"/>
+                    </group>
+<!--                    <group>-->
+<!--                        <button name="create_products" type="object" string="ADD"/>-->
+<!--                    </group>-->
+                </form>
+            </field>
+        </record>
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="action_add_products_window">
+            <field name="name">Product Addition</field>
+            <field name="res_model">products.add</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

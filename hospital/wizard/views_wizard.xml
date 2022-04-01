@@ -1,0 +1,38 @@
+<odoo>
+    <record id="hospital_form_wizard" model="ir.ui.view">
+        <field name="name">hospital wizard</field>
+        <field name="model">hospital.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Parameters">
+                <group>
+                    <field name="fname"/>
+                    <field name="lname"/>
+                    <field name="image" widget="image"/>
+                    <field name="mobile" widget="phone"/>
+                    <field name="email" widget="email"/>
+                </group>
+                <group>
+                    <footer>
+                        <button name="print" string="Print record" type="object" class="btn-primary" data-hotkey="q"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+
+
+    <record id="wizard_demo_action_window" model="ir.actions.act_window">
+        <field name="name">Print</field>
+        <field name="res_model">hospital.wizard</field>
+        <field name="view_id" ref="hospital_form_wizard"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+
+
+</odoo>

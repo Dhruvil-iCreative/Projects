@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="department_tree">
+            <field name="name">Department List</field>
+            <field name="model">department.department</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="depart_code"/>
+                    <field name="name"/>
+                    <field name="courses_ids"/>
+                    <field name="classes"/>
+                    <field name="floors"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!--    explicit form view defination-->
+        <record model="ir.ui.view" id="department_form">
+            <field name="name">Department Form</field>
+            <field name="model">department.department</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="depart_code"/>
+                            <field name="name"/>
+                            <field name="courses_ids" widget="many2many_tags"/>
+                            <field name="description"/>
+                            <field name="classes"/>
+                            <field name="floors"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="department_action">
+            <field name="name">Department window</field>
+            <field name="res_model">department.department</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- server action to the one above -->
+
+        <!--    <record model="ir.actions.server" id="school.action_server">-->
+        <!--      <field name="name">school server</field>-->
+        <!--      <field name="model_id" ref="model_school_school"/>-->
+        <!--      <field name="state">code</field>-->
+        <!--      <field name="code">-->
+        <!--        action = {-->
+        <!--          "type": "ir.actions.act_window",-->
+        <!--          "view_mode": "tree,form",-->
+        <!--          "res_model": model._name,-->
+        <!--        }-->
+        <!--      </field>-->
+        <!--    </record>-->
+
+    </data>
+</odoo>

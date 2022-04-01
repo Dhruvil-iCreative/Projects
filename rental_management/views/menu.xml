@@ -1,0 +1,16 @@
+<odoo>
+    <!-- Top menu item -->
+
+    <menuitem name="Rental Management" id="rental_management_menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Rental Management" id="rental_management_menu_1" parent="rental_management_menu_root"/>
+    <menuitem name="Rental Type" id="rental_type_menu_2" parent="rental_management_menu_root"
+              action="rental_type_views_action_window"/>
+
+    <!--menu sub-categories-->
+    <menuitem name="Rental" id="rental_management_sub_menu" parent="rental_management_menu_1"
+              action="rental_management_views_action_window"/>
+
+</odoo>

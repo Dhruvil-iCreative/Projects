@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="sale_order_default_tree">
+            <field name="name">default_wiz_tree</field>
+            <field name="model">default.wiz</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="customer"/>
+                    <field name="cus_email"/>
+                    <field name="sale_person"/>
+                    <field name="sale_person_contact"/>
+                    <field name="payment_terms"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_order_default_form">
+            <field name="name">sale_order_default_form</field>
+            <field name="model">default.wiz</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="customer"/>
+                        <field name="cus_email" widget="email"/>
+                        <field name="sale_person"/>
+                        <field name="sale_person_contact" widget="phone"/>
+                        <field name="payment_terms"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!--       -->
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="sale_order_default_wiz_views_action_window">
+            <field name="name">Default Wizard</field>
+            <field name="res_model">default.wiz</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+    </data>
+</odoo>

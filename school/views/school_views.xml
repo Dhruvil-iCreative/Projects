@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="school_tree">
+            <field name="name">School List</field>
+            <field name="model">school.school</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="departments_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    explicit form view definition-->
+        <record model="ir.ui.view" id="school_form">
+            <field name="name">School Form</field>
+            <field name="model">school.school</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="departments_ids" widget="many2many_tags"/>
+                            <field name="course_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="school_action">
+            <field name="name">School window</field>
+            <field name="res_model">school.school</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    </data>
+</odoo>

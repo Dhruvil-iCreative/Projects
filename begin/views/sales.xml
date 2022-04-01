@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale order inherited</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="mobile" widget="phone"/>
+                <field name="email" widget="email"/>
+            </xpath>
+            <xpath expr="//field[@name='mobile']" position="after">
+                <button name="%(begin.action_add_products_window)d" type="action" string="ADD PRODUCTS" class="btn btn-primary"/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="default_wiz" type="object" string="Open" class="btn btn-primary"/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="get_values" type="object" string="Values" class="btn btn-primary"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

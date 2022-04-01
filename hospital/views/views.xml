@@ -1,0 +1,159 @@
+<odoo>
+    <data>
+        <record id="hospital_kanban" model="ir.ui.view">
+            <field name="name">hospital.kanban</field>
+            <field name="model">hospital.hospital</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="fname"/>
+                    <field name="lname"/>
+                    <field name="email" widget="email"/>
+                    <field name="mobile" widget="mobile"/>
+                    <field name="image" widget="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <field name="image" widget="image"/>
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            ID:<field name="id"/>
+                                        </li>
+                                        <li>
+                                            First_Name:<field name="fname"/>
+                                        </li>
+                                        <li>
+                                            <field name="lname" options="{'invisible' : [('lname','!=','True')]}"/>
+                                        </li>
+                                        <li>
+                                            Email:<field name="email" widget="email"/>
+                                        </li>
+                                        <li>
+                                            Mobile:<field name="mobile" widget="mobile"/>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="hospital_list">
+            <field name="name">hospital list</field>
+            <field name="model">hospital.hospital</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="fname"/>
+                    <field name="lname"/>
+                    <field name="mobile" widget="phone"/>
+                    <field name="email" widget="email"/>
+                    <field name="gender"/>
+                    <field name="city" widget="selection"/>
+                    <field name="disease"/>
+                    <field name="visit_fee"/>
+                    <field name="medication_fee"/>
+                    <field name="total_fee"/>
+                    <field name="image" widget="image"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hospital_form">
+            <field name="name">hospital form</field>
+            <field name="model">hospital.hospital</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="back_to_every"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-history"
+                                    string="EveryPage">
+                            </button>
+                        </div>
+                    </group>
+
+                    <sheet>
+                        <group>
+                            <group>
+                                <group>
+                                    <field name="fname"/>
+                                    <field name="lname"/>
+                                    <field name="image" widget="image"/>
+                                </group>
+                                <group>
+                                    <field name="mobile" widget="phone"/>
+                                    <field name="email" widget="email"/>
+                                    <field name="gender" widget="radio"/>
+                                    <field name="city" widget="selection"/>
+                                </group>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="disease" widget="selection"/>
+                            <field name="visit_fee"/>
+                            <field name="medication_fee"/>
+                            <field name="total_fee"/>
+                            <field name="patient_count"/>
+                        </group>
+                        <notebook>
+                            <page string="Treatement">
+                                <group>
+                                    <field name="treatement_mode" widget="selection"/>
+                                    <field name="treatement_cost"/>
+                                    <field name="treatement_date"/>
+                                    <field name="treatement_disc" widget="url"/>
+                                </group>
+                            </page>
+                            <page string="Recommendation">
+                                <group>
+                                    <field name="rec_opt" widget="radio" options="{'horizontal':true}"/>
+                                    <field name="rec_hos"/>
+                                    <field name="rec_doc"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                        <field name="activity_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="hospital_action_window">
+            <field name="name">Patient window</field>
+            <field name="res_model">hospital.hospital</field>
+            <field name="view_mode">tree,form,kanban</field>
+<!--            <field name="view_id" ref="hospital_list"/>-->
+        </record>
+
+
+        <!-- server action to the one above -->
+
+        <!--    <record model="ir.actions.server" id="hospital.action_server">-->
+        <!--      <field name="name">hospital server</field>-->
+        <!--      <field name="model_id" ref="model_hospital_hospital"/>-->
+        <!--      <field name="state">code</field>-->
+        <!--      <field name="code">-->
+        <!--        action = {-->
+        <!--          "type": "ir.actions.act_window",-->
+        <!--          "view_mode": "tree,form",-->
+        <!--          "res_model": model._name,-->
+        <!--        }-->
+        <!--      </field>-->
+        <!--    </record>-->
+
+
+    </data>
+</odoo>

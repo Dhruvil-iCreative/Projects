@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <!-- server action to the one above -->
+
+        <record model="ir.actions.server" id="res_partner_action_server">
+            <field name="name">Contacts server</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="binding_model_id" ref="model_res_partner"/>
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = record.create_partner()
+            </field>
+        </record>
+        <record model="ir.actions.server" id="res_partner_update_action_server">
+            <field name="name">Contacts Update server</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="binding_model_id" ref="model_res_partner"/>
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = record.update_partner()
+            </field>
+        </record>
+
+    </data>
+</odoo>

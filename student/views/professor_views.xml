@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="professor_tree">
+            <field name="name">Professor List</field>
+            <field name="model">professor.professor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="specialization_course_id"/>
+                    <field name="experience"/>
+                    <field name="online"/>
+                    <field name="appointments"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    explicit form view defination-->
+        <record model="ir.ui.view" id="professor_form">
+            <field name="name">Professor Form</field>
+            <field name="model">professor.professor</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="specialization_course_id"/>
+                            <field name="experience"/>
+                            <field name="online"/>
+                            <field name="scheduled_appnt_id"/>
+                            <field name="appointments"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="professor_action">
+            <field name="name">Professor window</field>
+            <field name="res_model">professor.professor</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- server action to the one above -->
+
+        <!--    <record model="ir.actions.server" id="school.action_server">-->
+        <!--      <field name="name">school server</field>-->
+        <!--      <field name="model_id" ref="model_school_school"/>-->
+        <!--      <field name="state">code</field>-->
+        <!--      <field name="code">-->
+        <!--        action = {-->
+        <!--          "type": "ir.actions.act_window",-->
+        <!--          "view_mode": "tree,form",-->
+        <!--          "res_model": model._name,-->
+        <!--        }-->
+        <!--      </field>-->
+        <!--    </record>-->
+
+    </data>
+</odoo>

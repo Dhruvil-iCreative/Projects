@@ -1,0 +1,24 @@
+<odoo>
+
+        <!-- Top menu item -->
+
+        <menuitem name="hospital" id="hospital_menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Menu 1" id="hospital_menu_1" parent="hospital_menu_root"/>
+        <menuitem name="Menu 2" id="hospital_menu_2" parent="hospital_menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="List" id="hospital_menu_1_list" parent="hospital_menu_1"
+                  action="hospital_action_window"/>
+<!--        <menuitem name="Server to list" id="hospital" parent="hospital_menu_2"-->
+<!--                  action="hospital_action_server"/>-->
+        <menuitem name="popup" id="wizard_demo_menu_1_form" parent="hospital_menu_root"
+                  action="wizard_demo_action_window"/>
+
+
+
+
+</odoo>
