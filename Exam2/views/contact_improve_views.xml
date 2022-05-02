@@ -1,0 +1,30 @@
+<odoo>
+    <record id="contact_improve_form_view" model="ir.ui.view">
+        <field name="name">contact_improve_forms</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="birth_date"/>
+                <field name="age"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="res_partner_action_server">
+        <field name="name">Sale Order Creation</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="binding_model_id" ref="model_res_partner"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+             action = {
+                "type": "ir.actions.act_window",
+                "view_mode": "form",
+                "res_model": 'sale.order.wiz',
+                "action":"action_add_sale_order_window",
+                "context":{'active_ids': records.ids}
+                }
+        </field>
+    </record>
+</odoo>

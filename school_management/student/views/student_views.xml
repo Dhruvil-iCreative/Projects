@@ -6,17 +6,17 @@
             <field name="name">student list</field>
             <field name="model">student.student</field>
             <field name="arch" type="xml">
-                <tree>
-                    <field name="fname"/>
-                    <field name="lname"/>
-                    <field name="mobile" widget="phone"/>
-                    <field name="email" widget="email"/>
-                    <field name="gender"/>
-                    <field name="city"/>
-                    <field name="school_id"/>
+                <tree decoration-muted="city == 'b'" decoration-bf="city == 'b'">
+                    <field name="fname" optional="show"/>
+                    <field name="lname" optional="show"/>
+                    <field name="mobile" widget="phone" optional="show"/>
+                    <field name="email" widget="email" optional="show"/>
+                    <field name="gender" optional="hide"/>
+                    <field name="city" optional="hide"/>
+                    <field name="school_id" widget="badge"/>
                     <field name="departments_ids" widget="many2many_tags"/>
-                    <field name="courses_ids"/>
-                    <field name="appointment_id"/>
+                    <field name="courses_ids" />
+                    <field name="appointment_id" optional="hide"/>
                     <field name="checklist_progress" widget="progressbar"/>
                 </tree>
             </field>
@@ -29,6 +29,9 @@
                 <form>
                     <sheet>
                         <group>
+                            <div>
+                                <button name="send_student_email" type="object" string="Send Email" class="oe_highlight"/>
+                            </div>
                             <div class="oe_button_box" name="button_box">
                                 <button name="appointment_domain_list"
                                         type="object"
@@ -44,6 +47,7 @@
                         <group>
                             <field name="fname"/>
                             <field name="lname"/>
+                            <field name="image" widget="image"/>
                             <field name="mobile" widget="phone"/>
                             <field name="email" widget="email"/>
                             <field name="gender" widget="radio"/>

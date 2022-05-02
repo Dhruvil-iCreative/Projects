@@ -55,3 +55,15 @@ class Student(models.Model):
             'view_mode': 'tree,form',
             'type': 'ir.actions.act_window'
         }
+
+    def send_student_email(self):
+        print("Email Sent********************************************************")
+        template_id = self.env.ref("student.mail_template_student").id
+        self.env['mail.template'].browse(template_id).send_mail(self.id, force_send=True)
+
+    # @api.onchange('checklist_progress')
+    # def onchange_send_email(self):
+    #     for rec in self:
+    #         if rec.checklist_progress >= 50:
+    #             template_id = self.env.ref("student.mail_template_student").ids
+    #             self.env['mail.template'].browse(template_id).send_mail(self.id, force_send=True)

@@ -1,0 +1,105 @@
+<odoo>
+    <template id="students_list" name="Students List">
+        <t t-call="website.layout">
+            <title>Students List</title>
+            <center>
+                <h1>Students List</h1>
+            </center>
+            <br/>
+            <br/>
+            <div class="page">
+                <div class="col-xs-8">
+                    <table class="table table-sm o_main_table">
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="th_name" class="text-left">
+                                    First Name
+                                </th>
+                                <th name="th_organization_id" class="text-left">
+                                    Last Name
+                                </th>
+                                <th name="th_amount" class="text-left">
+                                    Mobile
+                                </th>
+                                <th name="th_amount" class="text-left">
+                                    Email
+                                </th>
+                                <th name="th_amount" class="text-left">
+                                    School ID
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="students" t-as="student">
+                                <tr>
+                                    <td>
+                                        <span t-field="student.fname"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="student.lname"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="student.mobile"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="student.email"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="student.school_id"/>
+                                    </td>
+                                    <td>
+                                        <a t-attf-href="/students/{{slug(student)}}/">
+                                            Open Student
+                                        </a>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+        <!--                 <h1>Hello</h1>-->
+    </template>
+    <template id="student_details" name="Student Detail">
+        <title><t t-esc="student.fname"/></title>
+        <t t-call="website.layout">
+            <center>
+                <h1>Student Details #<t t-esc="student.fname"/></h1>
+            </center>
+            <br/>
+            <br/>
+            <div class="oe_structure">
+                <div class="container">
+                    <div>
+                        <img t-att-src="'/web/image/student.student/%s/image' % student.id" />
+                    </div>
+                    <div>
+                        <div>
+                            <b>First Name:</b>
+                            <span t-field="student.fname"/>
+                            <br/>
+                        </div>
+                        <div>
+                            <b>Last Name:</b>
+                            <span t-field="student.lname"/>
+                            <br/>
+                        </div>
+                    </div>
+                    <div>
+                        <b>Phone:</b>
+                        <span t-field="student.mobile"/>
+                        <br/>
+                        <b>Email:</b>
+                        <span t-field="student.email"/>
+                    </div>
+                    <div>
+                        <b>School:</b>
+                        <span t-field="student.school_id.name"/>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

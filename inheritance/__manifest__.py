@@ -19,11 +19,14 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contacts', 'product'],
+    'depends': ['base', 'contacts', 'product', 'account'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'wizard/employee_timesheet_reporting.xml',
+        'views/account_move_views.xml',
+        'views/account_move_line_views.xml',
         'views/inherit_views.xml',
         'views/contact_improve_views.xml',
         'views/settings_config.xml',

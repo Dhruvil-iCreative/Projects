@@ -20,23 +20,30 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','school','mail'],
+    'depends': ['base', 'school', 'mail', 'website'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/mail_template.xml',
         'views/student_views.xml',
         'views/appointments_views.xml',
         'views/professor_views.xml',
         'views/tasks_views.xml',
         'views/students_list.xml',
         'views/menu.xml',
+        'views/website_form.xml',
         'reports/paper_format_student_report.xml',
         'reports/report_templates.xml',
         'reports/report.xml',
         'views/templates.xml',
     ],
-    # only loaded in demonstration mode
+    'assets': {
+        'web.assets_frontend': [
+            'student/static/src/css/student_form.css',
+        ],
+    },
+        # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],

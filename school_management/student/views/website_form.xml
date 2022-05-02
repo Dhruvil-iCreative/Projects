@@ -1,0 +1,91 @@
+<odoo>
+    <record id="student_form_view" model="website.menu">
+        <field name="name">Student Form</field>
+        <field name="url">/student_form</field>
+        <field name="parent_id" ref="website.main_menu"/>
+    </record>
+    <template id="student.create_form" name="Create Record">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <form role="form" action="/student_form/webstudent" method="POST"
+                              class="field_edit field_focus">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <label for="name" class="control-label">Your First Name</label>
+                                <br/>
+                                <input type="text" name="fname" t-att-value="fname" id="fname"
+                                       placeholder="Enter First Name"
+                                       required="required"/>
+                                <div>
+                                    <label for="mobile_no" class="control-label">Mobile Number</label>
+                                    <input type="text" name="mobile" t-att-value="mobile" id="mobile"
+                                           required="required"/>
+                                </div>
+                                <div>
+                                    <label for="email" class="control-label">Email</label>
+                                    <input type="text" name="email" t-att-value="email" id="email" required="required"/>
+                                </div>
+                                <div>
+                                    <label for="schools" class="control-label">School</label>
+                                    <select name="school_id">
+                                        <option t-foreach="schools" t-as="school" t-att-value="school.id">
+                                            <t t-esc="school.name"/>
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="clearfix oe_login_buttons">
+                                <button type="submit" class="btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+<!--    <template id="student_list" name="Student List">-->
+<!--        <t t-call="website.layout">-->
+<!--            <div class="oe_structure">-->
+<!--                <div class="container">-->
+<!--                    <br/>-->
+<!--                    <center>-->
+<!--                        <h2>Students List</h2>-->
+<!--                    </center>-->
+<!--                    <br/>-->
+<!--                    <center>-->
+<!--                        <table width="80%" class="table-striped table-bordered table-">-->
+<!--                            <thead style="font-size:23px;">-->
+<!--                                <tr>-->
+<!--                                    <h6>-->
+<!--                                        <b>-->
+<!--                                            <th>Name</th>-->
+<!--                                            <th>Mobile Number</th>-->
+<!--                                            <th>Email</th>-->
+<!--                                        </b>-->
+<!--                                    </h6>-->
+<!--                                </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                                <t t-foreach="student_list" t-as="rec">-->
+<!--                                    <tr>-->
+<!--                                        <td>-->
+<!--                                            <span t-esc="rec.fname"/>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <span t-esc="rec.mobile"/>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <span t-esc="rec.email"/>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                </t>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </center>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </t>-->
+<!--    </template>-->
+</odoo>

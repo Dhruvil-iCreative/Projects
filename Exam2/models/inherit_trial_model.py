@@ -9,7 +9,6 @@ class inhertance(models.Model):
     age = fields.Integer()
     city = fields.Selection([("a","Ahmedabad"),('b',"Baroda"),('s',"Surat")])
 
-
 class added(models.Model):
     _inherit = "inheritance_trial"
 

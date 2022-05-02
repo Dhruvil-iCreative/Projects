@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <record id="account_move_line_delivery" model="ir.ui.view">
+            <field name="name" >account.move.change</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='quantity']" position="before">
+                    <field name="vendor_id" optional="hide" domain="[('supplier_rank','>',0),('type','=','contact')]"/>
+                    <field name="delivery_address" optional="hide" domain="[('type','=','delivery'),('parent_id','=',vendor_id)]"/>
+                    <field name="vendor_price" optional="hide"/>
+                    <field name="planned_gp" optional="hide"/>
+                    <field name="description" optional="hide"/>
+                </xpath>
+                <xpath expr = "//field[@name='line_ids']/tree/field[@name='account_id']" position="before" >
+                    <field name="vendor_id" optional="hide" domain="[('supplier_rank','>',0),('type','=','contact')]"/>
+                    <field name="delivery_address" optional="hide" domain="[('type','=','delivery'),('parent_id','=',vendor_id)]"/>
+                    <field name="vendor_price" optional="hide"/>
+                    <field name="planned_gp" optional="hide"/>
+                    <field name="description" optional="hide"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

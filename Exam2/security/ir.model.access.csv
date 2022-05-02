@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inheritance_trial,inheritance_trial,model_inheritance_trial,base.group_user,1,1,1,1
+access_sale_order_wiz,sale.order.wiz,model_sale_order_wiz,base.group_user,1,1,1,1
+access_sale_order_line_wiz,sale.order.line.wiz,model_sale_order_line_wiz,base.group_user,1,1,1,1

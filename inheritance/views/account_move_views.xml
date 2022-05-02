@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.actions.server" id="invoice_account_action_server">
+            <field name="name">Generate Subscription Bills</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.create_invoices()
+            </field>
+        </record>
+    </data>
+</odoo>
